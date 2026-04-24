@@ -1,29 +1,80 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Usuario {
 
-    private String nombre;
-    private List<Libro> librosPrestados;
+	private String nombre;
+	private List<Libro> librosPrestados;
 
-    public Usuario(String nombre) {
-        this.nombre = nombre;
-        this.librosPrestados = new ArrayList<>();
-    }
+	public Usuario(String nombre) {
+		this.nombre = nombre;
+		this.librosPrestados = new ArrayList<>();
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String getNombre() { return nombre; }
 
-    public List<Libro> getLibrosPrestados() {
-        return librosPrestados;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void agregarLibro(Libro libro) {
-        librosPrestados.add(libro);
-    }
+	public List<Libro> getLibrosPrestados() {
+		return librosPrestados;
+	}
 
-    public void devolverLibro(Libro libro) {
-        librosPrestados.remove(libro);
-    }
+	public void agregarLibro(Libro libro) {
+		librosPrestados.add(libro);
+	}
+
+	public void devolverLibro(Libro libro) {
+		librosPrestados.remove(libro);
+	}
+
+	// modificar usuario
+	public void modificarUsuarioNombre(String nombre) {
+		setNombre(nombre);  	
+	}
+	// añadir usuario
+	public void anadirUsuario(GestorBiblioteca gestor, Usuario usuario){
+		gestor.anadirUsuario(usuario);
+	}
+
+	// eliminar usuario
+	public void eliminarUsuario(GestorBiblioteca gestor, Usuario usuario){
+		gestor.eliminarUsuario(usuario);
+	}
+
+	// Listar todos los usuarios
+	public void listarUsuarios(GestorBiblioteca gestor){
+		gestor.listarUsuarios();
+
+	}
+
+	// Buscar un usuario en concreto
+	public void buscarUsuarios(GestorBiblioteca gestor, String n){
+		gestor.buscarUsuarios(n); 
+	}
+
+	public String mostrarLibrosPrestados() {
+		String fin = "Listado de libros prestados: ";
+		Boolean entro = false;
+		for(int i = 0; i < librosPrestados.size(); i++) {
+
+			Libro libro = (Libro) librosPrestados.get(i);
+			fin = fin.concat(libro.getTitulo()).concat(", ");
+			entro = true;
+		}
+		if(entro) {
+			return fin;
+		} else {
+			return "No hay libros prestados...";
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Nombre:" + nombre + "\n" + mostrarLibrosPrestados();
+	}
+
+
 }
