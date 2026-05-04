@@ -11,17 +11,16 @@ public class GestorBiblioteca {
 	}
 
 	public void prestarLibro(Usuario usuario, Libro libro) {
+
 		if (!libro.estaPrestado()) {
 			libro.prestar();
-
-
-
-
 			Prestamo prestamo = new Prestamo(usuario, libro, LocalDate.now());
 			prestamos.add(prestamo);
-
+			
+			usuario.agregarHistorialPrestado(libro);
+			
 			usuario.agregarLibro(libro);
-
+			
 			System.out.println(usuario.getNombre() + " ha cogido el libro: " + libro.getTitulo());
 		} else {
 			System.out.println("Este libro ya está prestado.");

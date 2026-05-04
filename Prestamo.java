@@ -8,6 +8,7 @@ public class Prestamo {
     private Libro libro;
     private LocalDate fechaPrestamo;
     private LocalDate fechaDevolucion;
+    
 
     public Prestamo(Usuario usuario, Libro libro, LocalDate fechaPrestamo) {
         this.usuario = usuario;

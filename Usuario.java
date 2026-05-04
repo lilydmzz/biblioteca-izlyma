@@ -6,6 +6,7 @@ public class Usuario {
 
 	private String nombre;
 	private List<Libro> librosPrestados;
+	private List<Libro> historialPrestados = new ArrayList<>();
 
 	public Usuario(String nombre) {
 		this.nombre = nombre;
@@ -28,6 +29,24 @@ public class Usuario {
 
 	public void devolverLibro(Libro libro) {
 		librosPrestados.remove(libro);
+	}
+
+	public void revisarHistorialPrestados() {
+
+		System.out.println("Historial libros prestados:");
+		
+		for(int i = 0; i < historialPrestados.size(); i++) {
+			Libro libro = historialPrestados.get(i);
+			System.out.print(libro.getTitulo() + ":" + libro.getAutor());
+			if(i < historialPrestados.size() - 1) {
+				System.out.print(", ");
+			}
+
+		}
+	}
+
+	public void agregarHistorialPrestado(Libro libro) {
+		historialPrestados.add(libro);
 	}
 
 	// modificar usuario
@@ -70,6 +89,8 @@ public class Usuario {
 			return "No hay libros prestados...";
 		}
 	}
+
+
 
 	@Override
 	public String toString() {
