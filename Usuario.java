@@ -31,19 +31,7 @@ public class Usuario {
 		librosPrestados.remove(libro);
 	}
 
-	public void revisarHistorialPrestados() {
-
-		System.out.println("Historial libros prestados:");
-		
-		for(int i = 0; i < historialPrestados.size(); i++) {
-			Libro libro = historialPrestados.get(i);
-			System.out.print(libro.getTitulo() + ":" + libro.getAutor());
-			if(i < historialPrestados.size() - 1) {
-				System.out.print(", ");
-			}
-
-		}
-	}
+	
 
 	public void agregarHistorialPrestado(Libro libro) {
 		historialPrestados.add(libro);
@@ -87,6 +75,21 @@ public class Usuario {
 			return fin;
 		} else {
 			return "No hay libros prestados...";
+		}
+	}
+	
+	public void revisarHistorialPrestados() {
+
+		System.out.println("Historial libros prestados:");
+		
+		for(int i = 0; i < historialPrestados.size(); i++) {
+			Libro libro = historialPrestados.get(i);
+			System.out.print(libro.getTitulo() + ":" + libro.getAutor());
+			if(i < historialPrestados.size() - 1) {
+				System.out.print(", ");
+			}
+			System.out.println();
+
 		}
 	}
 

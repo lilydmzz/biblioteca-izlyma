@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Biblioteca {
 
-    private List<Libro> libros;
+    static List<Libro> libros;
 
     public Biblioteca() {
         this.libros = new ArrayList<>();

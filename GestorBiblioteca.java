@@ -33,12 +33,24 @@ public class GestorBiblioteca {
 		usuarios.remove(usuario);
 	}
 
+	public void listarLibros() {
+		
+		for(int i = 0; i < Biblioteca.libros.size(); i++) {
+		
+			System.out.print((i+1) + " - " );
+			System.out.print(Biblioteca.libros.get(i));
+			System.out.println();
+		}
+		
+	}
+	
 	public void listarUsuarios(){
 
 		for(int i = 0; i < usuarios.size(); i++) {
-			System.out.println();
-			System.out.print((i+1) + " ~ " );
+			
+			System.out.print((i+1) + " - " );
 			System.out.print(usuarios.get(i));
+			System.out.println();
 		}
 
 	}
