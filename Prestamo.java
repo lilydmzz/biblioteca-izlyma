@@ -2,6 +2,8 @@ import java.time.LocalDate;
 
 public class Prestamo {
 
+	private static final int MAX_LIBROSPRESTADOS = 3;
+	
     private Usuario usuario;
     private Libro libro;
     private LocalDate fechaPrestamo;
@@ -17,7 +19,6 @@ public class Prestamo {
     public Usuario getUsuario() {
         return usuario;
     }
-
     public Libro getLibro() {
         return libro;
     }
