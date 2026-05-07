@@ -1,10 +1,9 @@
-package biblioteca;
 /**
  * Representa un libro de la biblioteca.
  * Implementa Comparable para poder ordenar por número de veces prestado.
  */
 
-
+package biblioteca;
 public class Libro implements Comparable<Libro>{
 
 	private String titulo;

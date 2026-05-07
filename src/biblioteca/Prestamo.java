@@ -1,5 +1,4 @@
 package biblioteca;
-
 import java.time.LocalDate;
 /**
  * Representa un préstamo de un libro a un usuario en una fecha determinada.
