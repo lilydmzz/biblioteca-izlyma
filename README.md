@@ -94,5 +94,4 @@ Y se registran dos usuarios de prueba: **Pepe** e **Izarbe**.
 ## Colaboradores
  - `Marcos Jalca`
  - `Allison Valeriano`
- - `Izarbe Lanuza`
- - `Izarbe Lanuza`
+ - `Izarbe Lanuza Orna`
