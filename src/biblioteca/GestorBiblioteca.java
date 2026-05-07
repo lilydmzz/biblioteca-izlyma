@@ -237,6 +237,15 @@ public class GestorBiblioteca {
         }
     }
     
+    /**
+     * Busca y devuelve el objeto Usuario por nombre (para uso interno del menú).
+     */
+    public Usuario buscarUsuarioObjeto(String nombre) {
+        for (Usuario u : usuarios) {
+            if (u.getNombre().equalsIgnoreCase(nombre)) return u;
+        }
+        return null;
+    }
 
 
 
