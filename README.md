@@ -95,3 +95,4 @@ Y se registran dos usuarios de prueba: **Pepe** e **Izarbe**.
  - `Marcos Jalca`
  - `Allison Valeriano`
  - `Izarbe Lanuza`
+ - `Izarbe Lanuza`
