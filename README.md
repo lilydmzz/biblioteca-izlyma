@@ -20,35 +20,68 @@ biblioteca/
 
 ## Funcionalidades
 
-### Libros
-- Listar todos los libros del catálogo
-- Añadir un nuevo libro (poniendo el título y el autor)
-- Buscar un libro por título
-- Eliminar un libro
-
-### Usuarios
-- Listar usuarios registrados
-- Añadir un nuevo usuario
-- Buscar usuario por nombre
-- Eliminar usuario
-- Ver historial de libros prestados
-
-### Préstamos
-- Prestar un libro a un usuario
-- Registrar la devolución de un libro
-- Límite máximo de 3 libros por usuario
-
-### Categorías
-- Ver categorías disponibles
-- Añadir una nueva categoría
-- Asignar una categoría a un libro
-- Listar libros de una categoría concreta
-Categorías predeterminadas: `Novela`, `Historia`, `Ciencia`, `Infantil`
-
-### Estadísticas
-- **Libros más prestados**: ordenados de mayor a menor con porcentaje sobre el total
-- **Lectores más activos**: usuarios ordenados por cantidad de libros leídos
-- **Préstamos por categoría**: total de préstamos acumulados en una categoría
+ ### `Biblioteca.java`
+Gestiona el catálogo general de libros
+ 
+- **`iniciadorBiblioteca()`** — carga tres libros de ejemplo al arrancar la aplicación
+- **`agregarLibro(Libro)`** — añade un nuevo libro al catálogo
+- **`borrarLibro(String)`** — elimina un libro por título, este avisa si no existe
+- **`buscarLibro(String)`** — devuelve el libro que coincida con el título
+- **`listarLibros()`** — muestra todos los libros del catálogo
+---
+ 
+### `Libro.java`
+Representa un libro de la biblioteca
+ 
+- **`prestar()`** — marca el libro como prestado
+- **`devolver()`** — marca el libro como disponible
+- **`disponibilidadLibro()`** — informa si el libro está disponible o no
+- **`aumentarNumeroDeVecesPrestado()`** — incrementa en 1 el contador de préstamos
+- **`compareTo(Libro)`** — ordena de mayor a menor número de préstamos
+---
+ 
+### `Usuario.java`
+Representa a un usuario registrado
+ 
+- **`agregarLibro(Libro)`** — añade un libro a los prestamos actuales
+- **`devolverLibro(Libro)`** — elimina un libro de sus prestamos
+- **`agregarHistorialPrestado(Libro)`** — guarda el libro en el historial total del mismo usuario
+- **`cantidadDeLibrosPrestados()`** — devuelve el total de libros leídos (los actuales mas los del mismo historial)
+- **`mostrarLibrosPrestados()`** — devuelve un texto con los libros que tiene ahora mismo
+- **`revisarHistorialPrestados()`** — muestra todos los libros que ha tenido alguna vez
+- **`compareTo(Usuario)`** — ordena de mayor a menor número de libros prestados
+---
+ 
+### `Prestamo.java`
+Representa el registro de un préstamo entre un usuario y un libr
+ 
+- **`Prestamo(Usuario, Libro, LocalDate)`** — crea el préstamo y calcula automáticamente la fecha de devolución a 2 semanas
+- **`getUsuario()`** — devuelve el usuario que esta asociado al préstamo
+- **`getLibro()`** — devuelve el libro asociado a ese préstamo
+- **`getFechaDevolucion()`** — devuelve la fecha límite
+---
+ 
+### `GestorBiblioteca.java`
+Clase central que coordina todas las operaciones. Tanto préstamos, usuarios y categorías.
+ 
+- **`prestarLibro(Usuario, Libro)`** — verifica disponibilidad del libro, registra el préstamo y actualiza el historial. El limite es de 3 libros
+- **`devolverLibro(Usuario, Libro)`** — marca el libro como disponible y lo retira de los préstamos del usuario
+- **`anadirUsuario(Usuario)`** / **`eliminarUsuario(Usuario)`** — gestiona el alta y baja de usuarios
+- **`listarUsuarios()`** / **`buscarUsuarios(String)`** — muestra o localiza usuarios registrados
+- **`anadirCategorias(String)`** / **`mostrarCategorias()`** — gestiona la lista de categorías disponibles
+- **`asignarCategoriasLibros(int, Libro)`** — asigna una categoría a un libro
+- **`librosPorCategoria(int)`** — devuelve y muestra los libros de una categoría concreta
+- **`librosMasPrestados(List<Libro>)`** — ordena los libros de mayor a menor préstamos con porcentaje
+- **`lectoresActivos()`** — ordena los usuarios por cantidad de libros leídos
+- **`totalPrestamosCategoria(int)`** — suma el total de préstamos de todos los libros de una categoría
+---
+ 
+### `main.java`
+Gestiona el menú interactivo por consola
+ 
+- Inicializa la biblioteca con libros y usuarios de ejemplo al arrancar
+- Presenta un menú principal con 5 secciones: Libros, Usuarios, Préstamos, Categorías y Estadísticas
+- **`validarOpcion()`** — lee y valida la entrada numérica del usuario de forma segura
 
 ---
 
